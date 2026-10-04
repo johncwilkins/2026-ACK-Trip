@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a3a"><title>Grey Expectations — Nantucket 2026</title><meta name="description" content="Info-heavy interactive voyage log for Grey Expectations: Island Heights to Nantucket and back, June 28–July 8, 2026."><link rel="icon" href="assets/embedded/d5a1f431c1d89a87.jpg"><link rel="preconnect" href="https://unpkg.com"><link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="enhancements.css"></head><body>
+<header class="hero" id="top"><nav><a class="brand" href="#top">GREY EXPECTATIONS</a><div><a href="#voyage">Voyage</a><a href="#bookends">Bookends</a><a href="#explorer">Timeline</a><a href="#daybyday">Log</a><a href="#data">Black Box</a><a href="#nantucket">Nantucket</a><a href="#gallery">Gallery</a></div></nav><div class="hero-grid"><div><div class="eyebrow">NANTUCKET • 2026</div><h1>Seven travel days.<br><em>One very good weather call.</em></h1><p class="lede">A data-rich voyage log built from Grey Expectations’ Garmin GPX tracks, trip photos and the reconstructed shore timeline.</p><div class="hero-actions"><a class="btn" href="#voyage">Explore the trip</a><button class="btn ghost" id="illustrated">Illustrated mode</button></div></div><figure><img src="assets/embedded/43077530909ee329.jpg" alt="Grey Expectations, a grey Pursuit OS 355 with triple Yamaha outboards"><figcaption>Pursuit OS 355 • triple Yamaha 300s</figcaption></figure></div>
+<div class="stats"><div><b id="totalNm">530.2</b><span>unique GPX nautical miles</span></div><div><b>7</b><span>travel days</span></div><div><b>5</b><span>Nantucket nights</span></div><div><b id="topSpeed">35.23</b><span>kt top recorded speed</span></div><div><b>2</b><span>dense-fog encounters</span></div></div></header>
+<section class="quickfacts">
+ <div><small>BOAT</small><b>Pursuit OS 355</b><p>Grey hull • triple Yamaha 300 outboards • offshore express layout.</p></div>
+ <div><small>ROUTE</small><b>NJ → CT → ACK → NJ</b><p>Island Heights, Stamford, Stonington, Nantucket, Newport, Branford, Jersey City, home.</p></div>
+ <div><small>CREW</small><b>Three distinct acts</b><p>John/Matt/Samantha → John/Kirsten → John/Tim/Charlie.</p></div>
+ <div><small>DATA SOURCES</small><b>GPX + photos + Timeline</b><p>Garmin track points drive marine statistics; photos and Timeline reconstruct the shore story.</p></div>
+</section>
+<main>
+<section id="voyage" class="section"><div class="section-head"><div><span class="kicker">01 • THE VOYAGE</span><h2>The actual route</h2></div><p>Only the points matching each recording day are used, which removes the repeated Garmin tail data that had inflated earlier totals.</p></div><div class="map-wrap"><div id="map" aria-label="Interactive map of the voyage"></div><aside class="map-card"><h3 id="legTitle">Entire voyage</h3><p id="legNote">Select a leg to isolate it on the map and in the data.</p><div id="legStats"></div><button id="allLegs">Show entire voyage</button><div id="replayControls" hidden><div class="replay-head"><button id="playReplay" type="button">Play route</button><label for="replaySpeed">Replay speed</label><select id="replaySpeed"><option value="300">5 minutes / second</option><option value="900" selected>15 minutes / second</option><option value="3600">1 hour / second</option></select></div><label for="replayRange">Position along the recorded day</label><input id="replayRange" type="range" min="0" max="1000" value="0"><output id="replayReadout" aria-live="off"></output><p class="fine">The marker follows timestamped Garmin points. Recording gaps advance to the next available position.</p></div>
+</aside></div><div class="leg-strip" id="legStrip"></div></section>
+
+<section class="closing bookends" id="bookends"><div class="bookend-intro"><span class="kicker">THE TRIP’S BOOKENDS</span><h2>Lady Liberty, there and back</h2><p>The northbound run included a deliberate Statue of Liberty sightseeing stop. The return brought Grey Expectations past her again before the final run to Island Heights.</p></div><div class="bookend-photos"><figure><button type="button" class="bookend-photo" data-image="assets/liberty-outbound.jpg" data-caption="Statue of Liberty • June 28, 2026 • northbound voyage"><img loading="lazy" src="assets/liberty-outbound.jpg" alt="Statue of Liberty in gray conditions during the northbound voyage"></button><figcaption><b>On the way north</b><span>June 28, 2026 • New York Harbor on the outward journey.</span></figcaption></figure><figure><button type="button" class="bookend-photo" data-image="assets/liberty-return.jpg" data-caption="Statue of Liberty • July 8, 2026 • return voyage"><img loading="lazy" src="assets/liberty-return.jpg" alt="Statue of Liberty in clearer conditions during the return voyage"></button><figcaption><b>On the way home</b><span>July 8, 2026 • Back in New York Harbor on the journey home.</span></figcaption></figure></div></section>
+<section class="section" id="explorer">
+<div class="section-head"><div><span class="kicker">01B • TRIP TIMELINE</span><h2>Eleven days, on water and ashore</h2></div><p>Pick a day to explore its route, photographs and recorded phone activity. Times are Eastern daylight time.</p></div>
+<div class="day-selector" id="daySelector" aria-label="Choose a trip day"></div>
+<div class="explorer-layout"><article class="day-detail"><span class="kicker" id="dayDate"></span><h3 id="dayTitle"></h3><p id="dayStory"></p><div class="day-measures" id="dayMeasures"></div>
+<div id="dayPhotos" class="day-photos"></div></article>
+<aside class="phone-log"><h3>Phone Timeline</h3><p class="fine">Automatic activity labels are estimates. A “recorded stop” is not a verified venue. Overnight stops can continue into the next day.</p><div id="timelineSummary"></div><div id="timelineEvents"></div></aside></div>
+</section><section class="section" id="daybyday">
+  <div class="section-head"><div><span class="kicker">01B • DAY BY DAY</span><h2>The voyage log</h2></div>
+  <p>Each card combines the corrected itinerary with Garmin-derived leg statistics. Distances are the unique day-scoped GPX tracks rather than repeated Garmin tail data.</p></div>
+  <div class="daylog">
+    <article class="day">
+      <div class="date">2026-06-28</div>
+      <h3>Island Heights → Stamford</h3>
+      <div class="crew">John • Matt • Samantha</div>
+      <p>The trip opened with the longest northbound jump: Island Heights to Stamford. New York Harbor was part of the day rather than something to rush through; Grey Expectations deliberately stopped for the Statue of Liberty before continuing into Long Island Sound.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>86.7 nm</dd></div>
+        <div><dt>Top speed</dt><dd>30.58 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>4.8 hr</dd></div>
+        <div><dt>Water temp</dt><dd>62.8–74.0°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-06-29</div>
+      <h3>Stamford → Stonington</h3>
+      <div class="crew">John • Kirsten</div>
+      <p>Kirsten joined in Stamford. The next stop was Stonington, Connecticut. The actual trip did not stop in Mystic.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>80.0 nm</dd></div>
+        <div><dt>Top speed</dt><dd>30.16 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>3.8 hr</dd></div>
+        <div><dt>Water temp</dt><dd>62.3–72.9°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-06-30</div>
+      <h3>Stonington → Nantucket</h3>
+      <div class="crew">John • Kirsten</div>
+      <p>The key tactical day. A worsening forecast pushed the Nantucket run two days earlier than planned. Patchy morning fog and afternoon thunderstorms were expected. Two dense fog encounters forced major speed reductions, but the boat reached Nantucket before the afternoon weather.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>91.4 nm</dd></div>
+        <div><dt>Top speed</dt><dd>32.49 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>5.3 hr</dd></div>
+        <div><dt>Water temp</dt><dd>61.5–72.0°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-07-05</div>
+      <h3>Nantucket → Newport</h3>
+      <div class="crew">John • Tim • Charlie</div>
+      <p>After the Nantucket stay, Kirsten had left on Saturday. John, Tim and Charlie departed Sunday for Newport, beginning the four-day return.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>69.7 nm</dd></div>
+        <div><dt>Top speed</dt><dd>35.23 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>3.5 hr</dd></div>
+        <div><dt>Water temp</dt><dd>66.1–75.8°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-07-06</div>
+      <h3>Newport → Branford</h3>
+      <div class="crew">John • Tim • Charlie</div>
+      <p>Newport to Branford. The photographs from the bow include the Newport mansions. Garmin data also shows the deepest sustained water of the trip on this leg.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>78.2 nm</dd></div>
+        <div><dt>Top speed</dt><dd>31.42 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>3.8 hr</dd></div>
+        <div><dt>Water temp</dt><dd>63.2–72.1°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-07-07</div>
+      <h3>Branford → Jersey City</h3>
+      <div class="crew">John • Tim • Charlie</div>
+      <p>Branford to Jersey City: west through Long Island Sound and back into New York Harbor, setting up a short final day home.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>71.4 nm</dd></div>
+        <div><dt>Top speed</dt><dd>31.39 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>3.2 hr</dd></div>
+        <div><dt>Water temp</dt><dd>63.9–70.9°F</dd></div>
+      </dl>
+    </article>
+    <article class="day">
+      <div class="date">2026-07-08</div>
+      <h3>Jersey City → Island Heights</h3>
+      <div class="crew">John • Tim • Charlie</div>
+      <p>Jersey City to Island Heights. New York Harbor became the visual bookend to the northbound Statue of Liberty stop before Grey Expectations completed the trip home.</p>
+      <dl>
+        <div><dt>GPX distance</dt><dd>52.8 nm</dd></div>
+        <div><dt>Top speed</dt><dd>30.53 kt</dd></div>
+        <div><dt>Moving time*</dt><dd>2.9 hr</dd></div>
+        <div><dt>Water temp</dt><dd>66.3–80.4°F</dd></div>
+      </dl>
+    </article></div>
+</section><section class="decision"><div class="fog-art"><img src="assets/embedded/22a77e9199c80111.jpg" alt="Fog encountered during the Stonington to Nantucket run"></div><div><span class="kicker">THE PIVOT • JUNE 30</span><h2>Stonington → Nantucket, two days early</h2><p>Tuesday morning in Stonington, the planned progression changed. With worsening weather expected, Grey Expectations went straight to Nantucket. The forecast called for patchy morning fog and afternoon thunderstorms. Two dense fog banks still developed en route, but the boat reached Nantucket before the afternoon weather. Conditions worsened after arrival, validating the decision to use the available window.</p><div class="callouts"><span>Patchy morning fog</span><span>2 dense fog encounters</span><span>Afternoon thunderstorms</span></div></div></section>
+<section id="data" class="section dark"><div class="section-head"><div><span class="kicker">02 • BLACK BOX</span><h2>What the boat recorded</h2></div><p>Speed is calculated from consecutive GPS points. Depth and water temperature come from Garmin track-point extensions.</p></div><div class="data-grid"><div class="chart-card wide"><div class="chart-head"><h3 id="chartTitle">Voyage profile by distance</h3><select id="metric"><option value="speed">Speed • kt</option><option value="depth">Depth • ft</option><option value="temp">Water temperature • °F</option></select></div><div class="chart-controls"><label for="chartLeg">Voyage portion</label><select id="chartLeg"><option value="all">Entire voyage • all seven legs</option></select><div class="chart-actions"><button id="chartZoomIn" type="button">Zoom in</button><button id="chartZoomOut" type="button">Zoom out</button><button id="chartEarlier" type="button">Earlier</button><button id="chartLater" type="button">Later</button><button id="chartReset" type="button">Reset view</button></div></div><div class="chart-range"><label for="chartStart">Start <output id="chartStartLabel"></output><input id="chartStart" type="range" step="0.1"></label><label for="chartEnd">End <output id="chartEndLabel"></output><input id="chartEnd" type="range" step="0.1"></label></div><p id="chartRangeNote" class="fine" role="status"></p><p class="chart-click-hint">Click or tap the graph to locate the nearest recorded sample on the map.</p><div class="chart-linked-layout"><div class="profile-plot"><canvas id="profileChart" aria-label="Voyage graph. Click a point to show its GPS location on the adjacent map."></canvas></div><aside class="chart-location"><h4 id="chartLocationTitle">Where was this?</h4><div id="chartMap" aria-label="Map linked to the selected graph point"></div><div id="chartLocationReadout" aria-live="polite"><p>Click the graph to see the recorded position, time and boat measurements here.</p></div></aside></div><div id="fogNotes" class="fog-notes"></div><div id="passageNotes" class="fog-notes passage-notes"></div></div><div class="metric-card"><span>TOP SPEED</span><b>35.23 kt</b><p>Recorded July 5 on the Nantucket → Newport leg.</p></div><div class="metric-card"><span>DEEPEST SUSTAINED AREA</span><b>~166 ft</b><p>On the Newport → Branford leg.</p></div><div class="metric-card"><span>NORMAL CRUISE</span><b>26–29 kt</b><p>The recurring underway band across the trip.</p></div></div><div class="leg-table-wrap"><table><thead><tr><th>Date</th><th>Leg</th><th>GPX nm</th><th>Top kt</th><th>Moving hrs*</th></tr></thead><tbody id="legTable"></tbody></table><p class="fine">*Moving hours are a derived estimate using points at or above 1.5 kt; Garmin recording time includes idle and powered-on periods.</p>
+<div class="datadictionary">
+ <div><b>GPX distance</b><p>Calculated from the day-scoped Garmin track geometry. Repeated historical track tails in later files are excluded.</p></div>
+ <div><b>Speed</b><p>Derived from consecutive GPS positions and timestamps. The recorded trip maximum is 35.23 kt.</p></div>
+ <div><b>Moving time</b><p>A derived estimate using track points at or above 1.5 kt so powered-on dock and idle periods do not dominate.</p></div>
+ <div><b>Depth</b><p>Read from Garmin track-point extensions where available. Very low individual values can occur near docks or during sensor transitions.</p></div>
+ <div><b>Water temperature</b><p>Read from Garmin extensions. Short-window analysis showed little consistent speed-driven bias, so large changes are more likely geographic.</p></div>
+ <div><b>Timeline</b><p>Used as supporting evidence for shore movement and timing. Raw private location history is not included in the publishable website.</p></div>
+</div></div></section>
+<section id="nantucket" class="section"><div class="section-head"><div><span class="kicker">03 • THE HUMAN TRIP</span><h2>Nantucket was the center of gravity</h2></div><p>The marine GPX mostly stops telling the story once Grey Expectations is on the mooring. The shore timeline and photos fill in the rest.</p></div><div class="crew-arc"><div><small>NORTH TO STAMFORD</small><b>John • Matt • Samantha</b><p>Island Heights → New York Harbor → Stamford</p></div><i>→</i><div><small>TO NANTUCKET</small><b>John • Kirsten</b><p>Kirsten joins in Stamford; Stonington → Nantucket</p></div><i>→</i><div><small>THE RETURN</small><b>John • Tim • Charlie</b><p>Nantucket → Newport → Branford → Jersey City → home</p></div></div><div class="story-grid"><article><img src="assets/embedded/cfb0bf088dac3b1e.jpg" alt="Croquet in whites on Nantucket"><div><span>JULY 1–4</span><h3>Croquet in whites</h3><p>The house became the base after the first night aboard. Tim’s birthday weekend unfolded ashore while Grey Expectations waited on the mooring.</p></div></article><article><img src="assets/embedded/1dcc37c9bf6516c1.jpg" alt="Firecracker 5K"><div><span>JULY 4</span><h3>Firecracker 5K</h3><p>The early Timeline movement aligns with race morning. Kirsten left Nantucket on Saturday.</p></div></article><article><img src="assets/embedded/cbb6f17de97a91dd.jpg" alt="Beach dinner on Nantucket"><div><span>JULY 3</span><h3>Beach + dunes dinner</h3><p>The evening Timeline movement aligns with the beach dinner seen in the trip photographs.</p></div></article><article><img src="assets/embedded/b510b4760a07edee.jpg" alt="Newport mansions from the boat"><div><span>JULY 5</span><h3>The ride home begins</h3><p>John returned to the boat Sunday with Tim and Charlie. The next morning’s departure from Newport brought the mansions into view from the bow.</p></div></article></div></section>
+<section id="gallery" class="section gallery-section"><div class="section-head"><div><span class="kicker">04 • MEMORY DECK</span><h2>Scenes from the trip</h2></div><p>Tap any image to open it. The full collection below includes camera dates where available. “Illustrated mode” stylizes the photos without changing their geometry or inventing a different boat.</p></div><div class="gallery" id="galleryGrid"></div><div class="archive-head"><h3>The full trip collection</h3><a class="review-dates-link" href="#photo-dates">Date the undated photos</a><label for="photoFilter">Photographs from</label><select id="photoFilter"><option value="all">All days</option></select><span id="photoCount" role="status"></span></div><div class="gallery archive" id="archiveGallery"></div></section>
+
+
+<section class="section date-review-section"><details id="photo-dates"><summary>All trip photographs have dates</summary><div class="date-review-intro"><h2>Which day was this?</h2><p>Use the photo numbers below when sending dates in chat. For example: <b>U01 — July 8, 2026</b>. You can send a few at a time, group photos with the same date, or say “skip” for an image that doesn’t belong in the trip collection.</p><p>Tap a thumbnail to enlarge it. The same number appears in the enlarged caption. Existing dates come from camera timestamps; these images did not have a usable trip date.</p></div><div class="date-review-grid" id="dateReviewGrid"></div></details></section>
+<section class="privacy-note"><div><b>SOURCE NOTES</b><p>The website can tell the Nantucket story without publishing the raw Google Timeline export or a precise private-house coordinate. The trip explorer uses date-limited summaries; the full location-history export and private-house coordinates are excluded.</p></div></section></main>
+<dialog id="lightbox"><button id="lightboxClose" aria-label="Close">×</button><button id="photoPrevious" class="slideshow-arrow previous" aria-label="Previous photo">‹</button><button id="photoNext" class="slideshow-arrow next" aria-label="Next photo">›</button><img alt="Expanded trip photograph"><div class="slideshow-caption"><span id="photoPosition"></span><p></p></div></dialog>
+<footer><b>GREY EXPECTATIONS • NANTUCKET 2026</b><span>June 28–July 8, 2026 • Garmin tracks, trip photographs and summarized Timeline records.</span></footer>
+<script src="vendor/leaflet.js"></script><script src="vendor/chart.umd.min.js"></script><script src="app.js"></script><script src="explorer.js"></script></body></html>
