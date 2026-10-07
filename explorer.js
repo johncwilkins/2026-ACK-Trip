@@ -33,7 +33,7 @@ function chooseDay(date,updateMap=true){
  const leg=trip.legs.find(l=>l.date===date),story=shoreStories[date];
  document.querySelector('#dayDate').textContent=dayFmt(date);
  document.querySelector('#dayTitle').textContent=leg?leg.from+' → '+leg.to:story[0];
- document.querySelector('#dayStory').textContent=leg?notes[date]:story[1];
+ document.querySelector('#dayStory').textContent=(leg?notes[date]:story[1])+(day.shore_note?' '+day.shore_note:'');
  const ps=tripTracks[date];document.querySelector('#replayControls').hidden=!ps;
  document.querySelector('#dayMeasures').innerHTML=leg?'<div><b>'+leg.distance_nm.toFixed(1)+' nm</b><span>Unique GPX distance</span></div><div><b>'+leg.top_speed.toFixed(2)+' kt</b><span>Top recorded speed</span></div><div><b>'+clockFmt(ps[0].time)+'–'+clockFmt(ps.at(-1).time)+'</b><span>Garmin recording window</span></div>':'<div><b>'+day.stops+' stops</b><span>Phone Timeline records</span></div><div><b>'+day.walking_miles+' mi</b><span>Phone-estimated walking</span></div>';
  if(updateMap&&map){if(leg)selectLeg(date);else{fitAll();map.fitBounds([[41.22,-70.22],[41.34,-69.98]]);}}
@@ -41,7 +41,7 @@ function chooseDay(date,updateMap=true){
  if(ps){replayIndex=0;replayTime=new Date(ps[0].time).getTime();document.querySelector('#replayRange').value=0;renderReplay();}
  document.querySelector('#timelineSummary').innerHTML='<b>'+day.stops+' stops · '+day.movements+' movements</b><p class="fine">'+day.path_records+' background path records support the day’s timing. Automatic transport classifications can include boat travel.</p>';
  const el=document.querySelector('#timelineEvents');el.replaceChildren();day.events.forEach(e=>{
-  const row=document.createElement('div');row.className='timeline-event';row.innerHTML='<time>'+clockFmt(e.start)+'</time><div><b>'+escapeText(e.label)+'</b><small>'+clockFmt(e.end)+' · '+(e.minutes>=60?(e.minutes/60).toFixed(1)+' hr':e.minutes+' min')+(e.confidence<.5?' · uncertain classification':'')+'</small></div>';el.appendChild(row);
+  const row=document.createElement('div');row.className='timeline-event';row.innerHTML='<time>'+clockFmt(e.start)+'</time><div><b>'+escapeText(e.label)+'</b><small>'+clockFmt(e.end)+' · '+(e.minutes>=60?(e.minutes/60).toFixed(1)+' hr':e.minutes+' min')+(e.confidence<.5?' · uncertain classification':'')+'</small>'+(e.description?'<p class="timeline-context">'+escapeText(e.description)+'</p><small class="timeline-basis">Venue/activity: trip recollection. Stop times: phone history.</small>':'')+(e.source_url?'<a class="timeline-source" target="_blank" rel="noopener noreferrer" href="'+escapeText(e.source_url)+'">'+(e.source_url.includes('bartaco.com')||e.source_url.includes('beeratthelanding.com')?'Venue details':'Match source')+'</a>':'')+'</div>';el.appendChild(row);
  });
  const photos=tripPhotos.filter(p=>p.date===date);const photoEl=document.querySelector('#dayPhotos');photoEl.replaceChildren();const h=document.createElement('h4');h.textContent=photos.length+' dated photographs';photoEl.appendChild(h);const grid=document.createElement('div');grid.className='photo-strip';photos.forEach(p=>grid.appendChild(photoButton(p,photos)));photoEl.appendChild(grid);
 }
@@ -75,3 +75,4 @@ function renderDateReview(){
  const grid=document.querySelector('#dateReviewGrid');grid.replaceChildren();const pending=tripPhotos.filter(p=>!p.date);document.querySelector('.date-review-intro').hidden=!pending.length;document.querySelector('.date-review-section').hidden=!pending.length;document.querySelector('.review-dates-link').hidden=!pending.length;document.querySelector('#photo-dates summary').textContent=pending.length?'Help date the '+pending.length+' remaining photographs':'All trip photographs have dates';pending.forEach(p=>{const figure=document.createElement('figure');figure.appendChild(photoButton(p,pending));const caption=document.createElement('figcaption');const id=document.createElement('b');id.textContent=p.review_id;const file=document.createElement('small');file.textContent=p.source;caption.append(id,file);figure.appendChild(caption);grid.appendChild(figure)});
  function openReview(){if(window.location?.hash==='#photo-dates')document.querySelector('#photo-dates').open=true;}window.addEventListener('hashchange',openReview);openReview();
 }
+
